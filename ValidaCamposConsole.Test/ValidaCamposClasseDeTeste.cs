@@ -67,19 +67,6 @@ namespace ValidaCamposConsole.Test
             Assert.False(resultado);
         }
 
-        /*
-        private void SalvarResultado(string nameOf, object parametro, double tempoExecucao)
-        {
-            ResultadoTeste resultadoTeste = new ResultadoTeste
-            {
-                Nome = nameof(ValidarNomeTeste),
-                Parametro = parametro.ToString(),
-                TempoDeExecucao = tempoExecucao,
-                Resultado = StatusTesteEnum.Sucesso
-            };
-            Salvar.SalvarResultadoTeste(resultadoTeste);
-        }
-        */
 
     }
 }
