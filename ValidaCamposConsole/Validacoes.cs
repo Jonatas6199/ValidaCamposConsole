@@ -17,5 +17,20 @@ namespace ValidaCamposConsole
             else
                 return true;
         }
+        public static bool ValidarDataNascimento(string dataNascimento) 
+        {
+            DateTime dataNascimentoAValidar;
+            DateTime.TryParse(dataNascimento, out dataNascimentoAValidar);
+
+            if(dataNascimentoAValidar == DateTime.MinValue
+                || dataNascimentoAValidar > DateTime.Now)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

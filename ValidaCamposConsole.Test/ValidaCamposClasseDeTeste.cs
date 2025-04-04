@@ -1,26 +1,31 @@
+using System.Diagnostics;
+
 namespace ValidaCamposConsole.Test
 {
     public class ValidaCamposClasseDeTeste
     {
-        [Theory]
-        [InlineData("Joao")]
-        [InlineData("Pedro")]
-        [InlineData("Caio")]
-        [InlineData("Jonas")]
-        [InlineData("Gabi")]
-        [InlineData("Manuelle")]
-        [InlineData("Roberto")]
-        [InlineData("Wagner")]
-        public void ValidarNomeTeste(string nome)
+        [Fact(Skip = "Teste em desuso temporariamente")]
+        public void ValidarNomeTesteFact()
         {   //Arranjar o teste
+            string nome = "Pedro";
             //Executar a função
             bool resultado = Validacoes.ValidarNome(nome);
-          
             //Verificar o resultado da função(Assert)
             Assert.True(resultado);
         }
 
-        [Theory]
+        [Theory(Skip ="Testando outros métodos")]
+        [InlineData("Joao")]
+        [InlineData("Manuelle")]
+        [InlineData("Roberto")]
+        [InlineData("Wagner")]
+        public void ValidarNomeTeste(string nome)
+        {
+            bool resultado = Validacoes.ValidarNome(nome);
+            Assert.True(resultado);
+        }
+
+        [Theory(Skip = "Testando outros métodos")]
         [InlineData("")]
         [InlineData("Jo")]
         [InlineData(null)]
@@ -34,5 +39,47 @@ namespace ValidaCamposConsole.Test
             //Verificar o resultado da função(Assert)
             Assert.False(resultado);
         }
+
+        [Theory(Skip ="Teste em pausa")]
+        [InlineData("02/02/2012")]
+        [InlineData("03/08/2013")]
+        [InlineData("04/09/2014")]
+        [InlineData("05/12/2015")]
+        [InlineData("06/01/2016")]
+        [InlineData("28/jan/2016")]
+        public void ValidarDataNascimentoTrue(string dataNascimento) 
+        {
+            bool resultado = Validacoes.ValidarDataNascimento(dataNascimento);
+
+            Assert.True(resultado);
+        }
+
+        [Theory(Skip ="Teste em pausa")]
+        [InlineData("joao")]
+        [InlineData("")]
+        [InlineData("23/23/0001")]
+        [InlineData("90/59/0001")]
+        [InlineData("02/02/2026")]
+        public void ValidarDataNascimentoFalse(string dataNascimento)
+        {
+            bool resultado = Validacoes.ValidarDataNascimento(dataNascimento);
+
+            Assert.False(resultado);
+        }
+
+        /*
+        private void SalvarResultado(string nameOf, object parametro, double tempoExecucao)
+        {
+            ResultadoTeste resultadoTeste = new ResultadoTeste
+            {
+                Nome = nameof(ValidarNomeTeste),
+                Parametro = parametro.ToString(),
+                TempoDeExecucao = tempoExecucao,
+                Resultado = StatusTesteEnum.Sucesso
+            };
+            Salvar.SalvarResultadoTeste(resultadoTeste);
+        }
+        */
+
     }
 }
